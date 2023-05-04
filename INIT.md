@@ -16,3 +16,14 @@ $ docker-compose run --rm app yarn create next-app npg-sample\
 ```sh
 $ yarn add -D @typescript-eslint/eslint-plugin eslint-config-prettier eslint-plugin-simple-import-sort prettier npm-run-all
 ```
+
+## Prisma & NextAuth & MailHog
+
+```sh
+$ yarn add -D prisma
+$ npx prisma init
+$ yarn add next-auth @prisma/client @next-auth/prisma-adapter
+$ openssl rand -base64 32
+$ npx prisma migrate dev --name init
+$ yarn add nodemailer
+```
