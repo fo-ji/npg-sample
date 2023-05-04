@@ -1,14 +1,40 @@
 version: "3.8"
 
+x-common: &common
+  platform: linux/amd64
+
 services:
+  db:
+    << : *common
+    image: postgres:14-alpine
+    container_name: db
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/postgres/data:/var/lib/postgresql/data
+
+  mailhog:
+    << : *common
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - 8025:8025
+      - 1025:1025
+    depends_on:
+      - db
+
   app:
+    << : *common
     container_name: app
     build:
       context: .
     command: yarn dev
-    environment:
-      NODE_ENV: development
     ports:
       - 3000:3000
+      - 5555:5555
     volumes:
       - .:/app
+    tty: true
+    depends_on:
+      - mailhog
