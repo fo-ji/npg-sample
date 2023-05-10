@@ -7,35 +7,19 @@ on:
     branches:
       - main
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18.16.0'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.16.0'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn typecheck
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.16.0'
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn test
+          node-version: "18.16.0"
+          # cache: 'yarn'
+      - name: install
+        run: yarn install
+      - name: lint
+        run: yarn lint
+      - name: typecheck
+        run: yarn typecheck
+      - name: test
+        run: yarn test
