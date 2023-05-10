@@ -50,13 +50,15 @@ export const TodoList: FC = () => {
   };
 
   const handleDelete = async (todoId: string): Promise<void> => {
-    const { data } = await deleteTodoMutation({
-      variables: { todoId },
-    });
-    data?.deleteTodo &&
-      setTodos((prev) => {
-        return prev.filter((todo) => todo.id !== data.deleteTodo.id);
+    if (confirm('really delete OK?')) {
+      const { data } = await deleteTodoMutation({
+        variables: { todoId },
       });
+      data?.deleteTodo &&
+        setTodos((prev) => {
+          return prev.filter((todo) => todo.id !== data.deleteTodo.id);
+        });
+    }
   };
 
   return (
