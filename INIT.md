@@ -32,4 +32,6 @@ $ yarn add nodemailer
 ```sh
 $ yarn add graphql @graphql-tools/graphql-file-loader @graphql-tools/load @graphql-tools/schema apollo-server-micro micro micro-cors
 $ yarn add -D @graphql-codegen/cli @graphql-codegen/schema-ast @graphql-codegen/typescript @graphql-codegen/typescript-resolvers @types/micro-cors ts-node
+$ yarn add -D @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo
+$ yarn add @apollo/client
 ```
