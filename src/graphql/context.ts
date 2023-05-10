@@ -1,8 +1,8 @@
-import type { User } from '@prisma/client';
-import type { IncomingMessage } from 'http';
-import { getSession } from 'next-auth/react';
+import type { User } from "@prisma/client";
+import type { IncomingMessage } from "http";
+import { getSession } from "next-auth/react";
 
-import { prisma } from '@/libs/prisma';
+import { prisma } from "@/libs/prisma";
 
 export type Context = {
   prisma: typeof prisma;

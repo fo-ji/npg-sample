@@ -11,7 +11,7 @@
     "lint:prettier": "prettier --check .",
     "format": "run-s format:prettier format:eslint",
     "format:eslint": "yarn lint:eslint --fix",
-    "format:prettier": "yarn lint:prettier --write .",
+    "format:prettier": "yarn lint:prettier --write",
     "typecheck": "tsc",
     "generate": "graphql-codegen",
     "test": "vitest run",

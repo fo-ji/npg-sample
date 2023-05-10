@@ -1,26 +1,26 @@
-import type { MockedResponse } from '@apollo/client/testing';
+import type { MockedResponse } from "@apollo/client/testing";
 
 import {
   AddTodoDocument,
   DeleteTodoDocument,
   TodosDocument,
   UpdateTodoDocument,
-} from '@/generated/request';
+} from "@/generated/request";
 
 const generateTodoMock = () => {
   return {
-    __typename: 'Todo',
-    id: '1',
-    title: 'test1',
+    __typename: "Todo",
+    id: "1",
+    title: "test1",
     completed: false,
-    createdAt: '2023-01-01T00:00:00.000Z',
-    updatedAt: '2023-01-01T00:00:00.000Z',
-    userId: '1',
+    createdAt: "2023-01-01T00:00:00.000Z",
+    updatedAt: "2023-01-01T00:00:00.000Z",
+    userId: "1",
     user: {
-      __typename: 'User',
-      id: '1',
-      name: 'testUser1',
-      email: 'textUser1@example.com',
+      __typename: "User",
+      id: "1",
+      name: "testUser1",
+      email: "textUser1@example.com",
     },
   };
 };
@@ -32,19 +32,19 @@ export const mocks: MockedResponse[] = [
       data: {
         todos: [
           { ...generateTodoMock() },
-          { ...generateTodoMock(), id: '2', title: 'test2' }, // MEMO: id, titleを上書きしたオブジェクト
+          { ...generateTodoMock(), id: "2", title: "test2" }, // MEMO: id, titleを上書きしたオブジェクト
         ],
       },
     },
   },
   {
-    request: { query: AddTodoDocument, variables: { title: 'testAddTodo' } },
+    request: { query: AddTodoDocument, variables: { title: "testAddTodo" } },
     result: {
       data: {
         addTodo: {
           ...generateTodoMock(),
-          id: 'testAddTodoId',
-          title: 'testAddTodo',
+          id: "testAddTodoId",
+          title: "testAddTodo",
         },
       },
     },
@@ -52,7 +52,7 @@ export const mocks: MockedResponse[] = [
   {
     request: {
       query: UpdateTodoDocument,
-      variables: { todoId: '1', completed: true },
+      variables: { todoId: "1", completed: true },
     },
     result: {
       data: {
@@ -63,7 +63,7 @@ export const mocks: MockedResponse[] = [
   {
     request: {
       query: DeleteTodoDocument,
-      variables: { todoId: '1' },
+      variables: { todoId: "1" },
     },
     result: {
       data: {

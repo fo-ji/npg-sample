@@ -30,4 +30,3 @@ generates:
     config:
       scalars:
         DateTime: string
-

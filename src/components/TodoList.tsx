@@ -1,5 +1,5 @@
-import type { FC, FormEventHandler } from 'react';
-import { useEffect, useState } from 'react';
+import type { FC, FormEventHandler } from "react";
+import { useEffect, useState } from "react";
 
 import {
   type TodosQuery,
@@ -7,11 +7,11 @@ import {
   useDeleteTodoMutation,
   useTodosQuery,
   useUpdateTodoMutation,
-} from '@/generated/request';
+} from "@/generated/request";
 
 export const TodoList: FC = () => {
-  const [title, setTitle] = useState('');
-  const [todos, setTodos] = useState<TodosQuery['todos']>([]);
+  const [title, setTitle] = useState("");
+  const [todos, setTodos] = useState<TodosQuery["todos"]>([]);
   const { data, loading, error } = useTodosQuery();
   const [addTodoMutation] = useAddTodoMutation();
   const [updateTodoMutation] = useUpdateTodoMutation();
@@ -31,7 +31,7 @@ export const TodoList: FC = () => {
     e.preventDefault();
     const { data } = await addTodoMutation({ variables: { title } });
     data?.addTodo && setTodos((prev) => [data.addTodo, ...prev]);
-    setTitle('');
+    setTitle("");
   };
 
   const handleChange = async (
@@ -50,7 +50,7 @@ export const TodoList: FC = () => {
   };
 
   const handleDelete = async (todoId: string): Promise<void> => {
-    if (confirm('really delete OK?')) {
+    if (confirm("really delete OK?")) {
       const { data } = await deleteTodoMutation({
         variables: { todoId },
       });
@@ -75,9 +75,9 @@ export const TodoList: FC = () => {
       </form>
       <ul className="mt-5">
         {todos.map((todo) => (
-          <li key={todo.id} className={`${todo.completed && 'line-through'}`}>
+          <li key={todo.id} className={`${todo.completed && "line-through"}`}>
             <span>
-              {todo.completed ? '✔︎' : '👀'} {todo.title}
+              {todo.completed ? "✔︎" : "👀"} {todo.title}
             </span>
             <input
               type="checkbox"
